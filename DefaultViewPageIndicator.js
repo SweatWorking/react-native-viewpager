@@ -46,19 +46,13 @@ var styles = StyleSheet.create({
   },
 });
 
-var DefaultViewPageIndicator = React.createClass({
-  propTypes: {
-    goToPage: React.PropTypes.func,
-    activePage: React.PropTypes.number,
-    pageCount: React.PropTypes.number
-  },
-
-  getInitialState() {
-    return {
+export default class DefaultViewPageIndicator  extends React.Component {
+  constructor(props) {
+    super(props)
+    this.state = {
       viewWidth: 0,
-    };
-  },
-
+    }
+  }
   renderIndicator(page) {
     //var isTabActive = this.props.activePage === page;
     return (
@@ -66,7 +60,7 @@ var DefaultViewPageIndicator = React.createClass({
         <View style={styles.dot} />
       </TouchableOpacity>
     );
-  },
+  }
 
   render() {
     var pageCount = this.props.pageCount;
@@ -99,7 +93,5 @@ var DefaultViewPageIndicator = React.createClass({
         <Animated.View style={[styles.curDot, {left}]} />
       </View>
     );
-  },
-});
-
-module.exports = DefaultViewPageIndicator;
+  }
+};
