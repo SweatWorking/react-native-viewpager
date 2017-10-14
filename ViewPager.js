@@ -15,25 +15,11 @@ var {
 
 var StaticRenderer = require('react-native/Libraries/Components/StaticRenderer');
 
-var DefaultViewPageIndicator = require('./DefaultViewPageIndicator');
+import DefaultViewPageIndicator from './DefaultViewPageIndicator'
 var deviceWidth = Dimensions.get('window').width;
 var ViewPagerDataSource = require('./ViewPagerDataSource');
 
 export default class ViewPager extends React.Component {
-  static DataSource = ViewPagerDataSource
-  static fling = false
-  static defaultProperties = {
-    isLoop: false,
-    locked: false,
-    animation: function(animate, toValue, gs) {
-      return Animated.spring(animate,
-        {
-          toValue: toValue,
-          friction: 10,
-          tension: 50,
-        })
-    }
-  }
 
   constructor(props) {
     super(props)
@@ -305,6 +291,21 @@ export default class ViewPager extends React.Component {
     );
   }
 }
+
+ViewPager.defaultProps = {
+  isLoop: false,
+  locked: false,
+  animation: function(animate, toValue, gs) {
+  return Animated.spring(animate,
+    {
+      toValue: toValue,
+      friction: 10,
+      tension: 50,
+    })
+  }
+}
+ViewPager.DataSource = ViewPagerDataSource
+ViewPager.fling = false
 
 var styles = StyleSheet.create({
   indicators: {
