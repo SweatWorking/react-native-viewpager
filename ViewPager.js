@@ -281,7 +281,7 @@ export default class ViewPager extends React.Component {
           {bodyComponents}
         </Animated.View>
 
-        {this.renderPageIndicator({goToPage: this.goToPage,
+        {this.renderPageIndicator({goToPage: () => this.goToPage(),
                             pageCount: pageIDs.length,
                             activePage: this.state.currentPage,
                             scrollValue: this.state.scrollValue,
